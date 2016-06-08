@@ -6,7 +6,7 @@
 /*   By: aputman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 17:38:16 by aputman           #+#    #+#             */
-/*   Updated: 2016/05/10 13:01:34 by aputman          ###   ########.fr       */
+/*   Updated: 2016/06/01 16:43:07 by aputman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void				exit_handler(t_env *env, t_map *map);
 int					map_key(int keycode, t_env *env);
 int					color_key(int keycode, t_env *env);
 
-void                printmap(t_map *map, t_env env);
-void                apply_iso(t_env env, int x, int y, char truc);
+void				printmap(t_map *map, t_env *e);
+void				apply_iso(t_env *env, int x, int y, char truc);
 
 #endif

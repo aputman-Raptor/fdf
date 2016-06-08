@@ -6,14 +6,23 @@
 /*   By: aputman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 15:48:22 by aputman           #+#    #+#             */
-/*   Updated: 2016/05/10 13:26:51 by aputman          ###   ########.fr       */
+/*   Updated: 2016/06/07 13:13:10 by aputman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+static void	reset_pos(t_env *env)
+{
+	env->zoom = 1;
+	env->posx = 0;
+	env->posy = 0;
+}
+
 int			map_key(int keycode, t_env *env)
 {
+	if (keycode == 49)
+		reset_pos(&(*env));
 	if (keycode == 69)
 		env->zoom += 1;
 	if (keycode == 78)
@@ -22,13 +31,13 @@ int			map_key(int keycode, t_env *env)
 			env->zoom -= 1;
 	}
 	if (keycode == 123)
-		env->posx += (10 * env->zoom);
+		env->posx += (1 * env->zoom);
 	else if (keycode == 124)
-		env->posx -= (10 * env->zoom);
+		env->posx -= (1 * env->zoom);
 	else if (keycode == 125)
-		env->posy -= (10 * env->zoom);
+		env->posy -= (1 * env->zoom);
 	else if (keycode == 126)
-		env->posy += (10 * env->zoom);
+		env->posy += (1 * env->zoom);
 	return (1);
 }
 

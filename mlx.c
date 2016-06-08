@@ -6,7 +6,7 @@
 /*   By: aputman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/21 14:27:13 by aputman           #+#    #+#             */
-/*   Updated: 2016/05/10 14:44:17 by aputman          ###   ########.fr       */
+/*   Updated: 2016/06/07 13:13:34 by aputman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		key_ft(int keycode, t_env *env)
 	else
 		result = color_key(keycode, &(*env));
 	if (result == 1)
-		printmap(env->map, *env);
+		printmap(env->map, env);
 	return (1);
 }
 
@@ -55,5 +55,5 @@ void			mlx_env_init(t_env *env)
 	env->color->g = 255;
 	env->color->b = 255;
 	env->win = mlx_new_window(env->mlx, env->size, env->size, "fdf");
-	mlx_key_hook(env->win, key_ft, &(*env));
+	mlx_hook(env->win, 2, 1, key_ft, &(*env));
 }

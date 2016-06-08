@@ -6,7 +6,7 @@
 /*   By: aputman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 16:44:50 by aputman           #+#    #+#             */
-/*   Updated: 2016/05/10 14:41:24 by aputman          ###   ########.fr       */
+/*   Updated: 2016/06/01 16:35:59 by aputman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,19 @@ int			usage(void)
 
 int			main(int argc, char **argv)
 {
-	t_env	env;
+	t_env	*env;
 	t_map	*map;
 
 	if (argc != 2)
 		return (usage());
-	mlx_env_init(&env);
+	if (!(env = (t_env *)ft_memalloc(sizeof(t_env))))
+		return (-1);
+	mlx_env_init(&(*env));
 	if (!(map = (t_map *)ft_memalloc(sizeof(t_map))))
 		return (-1);
 	map = getmap(map, argv[1]);
-	env.map = &(*map);
+	env->map = &(*map);
 	printmap(map, env);
-	mlx_loop(env.mlx);
+	mlx_loop(env->mlx);
 	return (0);
 }
